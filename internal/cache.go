@@ -1,5 +1,7 @@
 package internal
 
+import "fmt"
+
 type Cache struct {
 	cache map[string]any
 }
@@ -14,9 +16,12 @@ func (c *Cache) Set(key string, value any) {
 	c.cache[key] = value
 }
 
-func (c *Cache) Get(key string) (any, bool) {
+func (c *Cache) Get(key string) (any, error) {
 	v, ok := c.cache[key]
-	return v, ok
+	if !ok {
+		return nil, fmt.Errorf(keyNotFoundTemplate, key)
+	}
+	return v, nil
 }
 
 func (c *Cache) Delete(key string) {
