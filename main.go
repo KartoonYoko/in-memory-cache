@@ -1,4 +1,4 @@
-package main
+package inmemory
 
 type Cache struct {
 	cache map[string]any
