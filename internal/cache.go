@@ -1,4 +1,4 @@
-package inmemory
+package internal
 
 type Cache struct {
 	cache map[string]any
