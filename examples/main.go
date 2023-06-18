@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/KartoonYoko/in-memory-cache/pkg/cache"
 )
@@ -9,7 +10,7 @@ import (
 func main() {
 	cache := cache.New()
 
-	cache.Set("userId", 42)
+	cache.Set("userId", 42, time.Second)
 	userId, err := cache.Get("userId")
 
 	if err != nil {
@@ -18,7 +19,9 @@ func main() {
 	}
 	fmt.Println(userId)
 
-	cache.Delete("userId")
+	// time.Sleep(time.Second * 3)
+	// cache.Delete("userId")
+	
 	userId, err = cache.Get("userId")
 
 	if err != nil {

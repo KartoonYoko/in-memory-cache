@@ -1,5 +1,10 @@
 package internal
 
+import "errors"
+
+// не найден ключ
+var ErrKeyNotFound = errors.New("key not found")
+
 const (
-	keyNotFoundTemplate = "key not found, key = %s"
+	keyNotFoundTemplate = "%w, key = %s"
 )
